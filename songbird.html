@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Songbird App</title>
+</head>
+<body>
+  <container class="container">
+    <header>
+      <div class="section-1">
+        <div class="songbird">
+          <div class="songbird-mouseover">Son</div>
+          <div class="songbird-rotate">g</div>
+          <div class="songbird-mouseover">bird</div>
+        </div>
+        <div class="score">Score: 0</div>
+      </div>
+      <div class="section-2">
+          <nav>
+            <ul>
+              <li>Разминка</li>
+              <li>Воробьиные</li>
+              <li>Лесные птицы</li>
+              <li>Певчие птицы</li>
+              <li>Хищные птицы</li>
+              <li>Морские птицы</li>
+            </ul>
+          </nav>
+      </div>
+    </header>
+    <main>
+      <div class="question-block">
+        <audio class="answer-sound" src=""></audio>
+        <div class="question-img-div">
+          <img class="question-image" src="./images/unknown-bird.jpg" alt="unknown bird">
+        </div>
+        <div class="question-name">
+          <h2>******</h2>
+
+
+          <div class="player">
+            <div>
+              <audio class="audio" src=''></audio>
+            </div>
+            <div class="btn-play">
+              <img class="img-src" src="./images/play-icon.svg" alt="play">
+            </div>
+            <div class="progress-container">
+              <div class="progress"></div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="answers-block">
+
+        <fieldset class="keystroke-card">
+        </fieldset>
+
+        <div class="answer-card">
+        </div>
+        
+      </div>
+    </main>
+    <footer>
+      <button class="next-level" disabled>Next level</button>
+    </footer>
+
+
+  </container>
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
