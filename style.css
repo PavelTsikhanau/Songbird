@@ -18,32 +18,34 @@ html, body {
 header {
   display: flex;
   flex-direction: column;
-  margin-top: 2.5%;
-  margin-bottom: 1.25%;
-
+  margin-top: 1.25%;
+  margin-bottom: 0.66%;
   border-radius: 5px;
   border: solid black 2px;
-
   width: 95%;
   height: auto;
-
   background-color: rgb(30, 211, 151);
-
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .section-1 {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1rem;
 }
 
 .songbird {
   display: flex;
   flex-direction: row;
-  font-size: 5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.songbird-rotate {
+  display: flex;
+  flex-direction: row;
+  font-size: 5em;
   cursor: pointer;
 }
 
@@ -52,59 +54,27 @@ header {
   transition: 0.3s;
 }
 
+.songbird-mouseover {
+  display: flex;
+  flex-direction: row;
+  font-size: 5em;
+  cursor: pointer;
+}
+
 .songbird-mouseover-after {
   display: flex;
   flex-direction: row;
-  font-size: 5rem;
+  font-size: 4.9em;
+  transition: font-size 1s, color 1s;
   color: rgba(41, 34, 13, 0.63);
   cursor: pointer;
 }
 
-.logo-image {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-#logo-image {
-  width: 8.5rem;
-  height: auto;
-  cursor: pointer;
-
-  border-style: solid;
-  border-color: rgb(34 45 13 / 56%);
-  border-radius: 5px;
-}
-
-.logo-image:hover::after { 
-  content: attr(data-title); 
-  position: absolute;
-
-  width: 70%;
-  height: auto;
-  top: 4rem;
-  right: 10rem;
-  
-  transition: 1s;
-
-  color: rgb(252, 252, 252);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-
-  font-style: italic;
-  text-align: center;
-  background-color: rgba(34, 45, 13, 0.308);
-  border-radius: 5px;
-}
-
 .score {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .section-2 {
@@ -114,27 +84,33 @@ header {
 }
 
 nav {
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 ul {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
-  gap: 1rem;
   padding: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 5px;
 }
 
 li {
   display: inline;
+  flex: auto;
+  padding: 0.15rem;
   cursor: pointer;
+  text-align: center;
 }
 
 .current-chapter {
   background-color: rgb(238, 202, 84);
-  border: solid;
   padding: 0.15rem;
   border-radius: 5px;
 }
@@ -144,14 +120,12 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
-  margin-top: 1.25%;
-  margin-bottom: 1.25%;
-  padding: 2rem 0;
+  margin-top: 0.66%;
+  margin-bottom: 0.66%;
+ 
   border-radius: 5px;
   background-color: rgb(238, 202, 84);
   border: solid black 2px;
-
   width: 95%;
   height: 70vh;
 }
@@ -418,25 +392,36 @@ footer button:disabled {
   .songbird {
     display: flex;
     flex-direction: row;
-    font-size: 4.5rem;
+    align-items: center;
     cursor: pointer;
   }
-
+  
+  .songbird-rotate {
+    display: flex;
+    flex-direction: row;
+    font-size: 5em;
+    cursor: pointer;
+  }
+  
+  .songbird-rotate:hover {
+    transform: scale(1.25) rotate(9deg);
+    transition: 0.3s;
+  }
+  
+  .songbird-mouseover {
+    display: flex;
+    flex-direction: row;
+    font-size: 4.5em;
+    cursor: pointer;
+  }
+  
   .songbird-mouseover-after {
     display: flex;
     flex-direction: row;
-    font-size: 4.5rem;
+    font-size: 4.4em;
+    transition: font-size 1s, color 1s;
     color: rgba(41, 34, 13, 0.63);
     cursor: pointer;
-  }
-
-  .logo-image {
-    width: 75%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
   }
 
   .score {
@@ -446,6 +431,7 @@ footer button:disabled {
     align-items: center;
     font-size: 2rem;
     justify-content: space-around;
+    cursor: pointer;
   }
 
   main {
@@ -500,36 +486,36 @@ footer button:disabled {
   .songbird {
     display: flex;
     flex-direction: row;
-    font-size: 4rem;
+    align-items: center;
     cursor: pointer;
   }
-
+  
+  .songbird-rotate {
+    display: flex;
+    flex-direction: row;
+    font-size: 4em;
+    cursor: pointer;
+  }
+  
+  .songbird-rotate:hover {
+    transform: scale(1.25) rotate(9deg);
+    transition: 0.3s;
+  }
+  
+  .songbird-mouseover {
+    display: flex;
+    flex-direction: row;
+    font-size: 4em;
+    cursor: pointer;
+  }
+  
   .songbird-mouseover-after {
     display: flex;
     flex-direction: row;
-    font-size: 4rem;
+    font-size: 3.9em;
+    transition: font-size 1s, color 1s;
     color: rgba(41, 34, 13, 0.63);
     cursor: pointer;
-  }
-
-  .logo-image:hover::after { 
-    content: attr(data-title); 
-    position: absolute;
-  
-    width: 60%;
-    height: auto;
-    top: 4.5rem;
-    right: 8rem;
-    
-    transition: 1s;
-  
-    color: rgb(252, 252, 252);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  
-    font-style: italic;
-    text-align: center;
-    background-color: rgba(34, 45, 13, 0.308);
-    border-radius: 5px;
   }
 
   .answers-block {
