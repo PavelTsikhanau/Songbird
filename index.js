@@ -26,8 +26,6 @@ console.log(randomBird)
 //header style 
 const burgerRotate = document.querySelector('.songbird-rotate');
 const burgerMouseover = document.querySelectorAll('.songbird-mouseover');
-const logoImage = document.querySelector('.logo-image');
-
 burgerRotate.addEventListener('click', function () {
   alert('click');
 });
@@ -81,11 +79,10 @@ function createRadiobutton(bird) {
       document.querySelector('.next-level').removeAttribute('disabled');
       document.querySelector('.question-image').src = randomBird.image;
       document.querySelector('footer').classList.add('next');
-      document.querySelector('h2').innerHTML = `${randomBird.name}`;
+      document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
     } else {
       answerSound.src = './sounds/incorrect-answer.mp3';
       answerSound.play();
-      
     };
   };
 
@@ -242,13 +239,3 @@ function fillAnswerCard() {
   upperBlockRight.append(answerCardName, answerCardSpecies);
   lowerBlock.append(description);
 }
-
-
-
-
-
-
-
-
-
-
