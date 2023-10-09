@@ -122,9 +122,8 @@ li {
 
 .current-chapter {
   background-color: rgb(238, 202, 84);
-  border-radius: 5px;
+  border-radius: 3px;
   border: solid black 1px;
-  margin: 0.15rem;
 }
 
 main {
@@ -245,6 +244,10 @@ input:checked {
   border: 6px solid black;
 }
 
+.line-vertical {
+
+}
+
 .answer-card {
   display: flex;
   flex-direction: column;
@@ -275,9 +278,10 @@ input:checked {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  font-size: 1.1em;
+  font-weight: 600;
   width: 50%;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .answer-card-image {
@@ -294,7 +298,9 @@ input:checked {
 
 .lower-block {
   display: flex;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+  font-size: smaller;
 }
 
 footer {
@@ -479,6 +485,16 @@ footer button:disabled {
     height: auto;
     padding-bottom: 2rem;
     padding-top: 2rem;
+  }
+
+  .keystroke-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 60%;
+    height: 100%;
+    border: none;
+    padding: 0;
   }
 
   .answer-card {
