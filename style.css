@@ -377,8 +377,12 @@ footer button:disabled {
 
 .btn-play {
   display: flex;
-  width: 2rem;
+  width: 32px;
   cursor: pointer;
+}
+
+.img-src {
+  width: 100%;
 }
 
 .is-playing {
