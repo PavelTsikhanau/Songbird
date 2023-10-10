@@ -75,7 +75,7 @@ header {
 .score {
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 5rem;
   cursor: pointer;
 }
 
@@ -377,7 +377,7 @@ footer button:disabled {
 
 .btn-play {
   display: flex;
-  width: 32px;
+  width: 2rem;
   cursor: pointer;
 }
 
