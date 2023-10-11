@@ -14,7 +14,10 @@ const warmingUp = birdsData[0],
   progress = document.querySelector('.progress'),
   imgSrc = document.querySelector('.img-src'),
   progressContainer = document.querySelector('.progress-container'),
-  answerCard = document.querySelector('.answer-card');
+  answerCard = document.querySelector('.answer-card'),
+  popUp = document.querySelector('.popup'),
+  popUpContent = document.querySelector('.popup-content');
+
 
 let score = 0;
 let currentIndex = 0;
@@ -100,7 +103,27 @@ function createRadiobutton(bird) {
   //click on radiobutton
   function radioClick(e) {
     console.log(currentIndex);
-    if (radiobutton.id === randomBird.id.toString()) {
+    if (currentIndex == 5 && radiobutton.id === randomBird.id.toString()) { //TODO
+      answerSound.src = "./sounds/correct-answer.mp3";
+      answerSound.play();
+      popUp.style.visibility = 'visible';
+      popUpContent.innerText = `You are winner! Your score is ${score + 5}!`;
+
+      //click on popup
+      popUp.addEventListener('click', function(e) {
+        popUp.style.visibility = 'hidden';
+        radiobutton.style.backgroundColor = 'rgb(30, 211, 151)';
+        document.querySelector('.score').innerHTML = `Score: ${score + 5}`;
+        pauseSong();
+        fillAnswerCard();
+        resetProgress();
+        
+        document.querySelector('.question-image').src = randomBird.image;
+        document.querySelector('footer').classList.add('next');
+        document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
+      })
+
+    } else if (radiobutton.id === randomBird.id.toString()) {
       document.querySelector('.score').innerHTML = `Score: ${score + 5}`;
       radiobutton.style.backgroundColor = 'rgb(30, 211, 151)'
       answerSound.src = "./sounds/correct-answer.mp3";
@@ -112,12 +135,9 @@ function createRadiobutton(bird) {
       document.querySelector('.question-image').src = randomBird.image;
       document.querySelector('footer').classList.add('next');
       document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
-    } else if (currentIndex == 5 && radiobutton.id === randomBird.id.toString()) { //TODO
-        popUp.style.visibility = 'visible';
     } else {
       fillBirdCard();
       score -= 1;
-    
       answerSound.src = './sounds/incorrect-answer.mp3';
       answerSound.play();
       radiobutton.setAttribute('disabled', '');
