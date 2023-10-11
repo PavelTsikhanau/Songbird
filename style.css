@@ -404,13 +404,13 @@ footer button:disabled {
 }
 
 .popup .popup-content {
-  margin: 20rem auto 0px auto;
-  width: 30rem;
+  margin: 15rem auto 0px auto;
+  width: 70vh;
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 5rem;
   height: 15rem;
-  padding: 10px;
+  padding: 3rem;
   background-color: #e7e7e7;
   border-radius: 5px;
   box-shadow: 0px 0px 10px #000;
