@@ -99,6 +99,7 @@ function createRadiobutton(bird) {
 
   //click on radiobutton
   function radioClick(e) {
+    console.log(currentIndex);
     if (radiobutton.id === randomBird.id.toString()) {
       document.querySelector('.score').innerHTML = `Score: ${score + 5}`;
       radiobutton.style.backgroundColor = 'rgb(30, 211, 151)'
@@ -111,6 +112,8 @@ function createRadiobutton(bird) {
       document.querySelector('.question-image').src = randomBird.image;
       document.querySelector('footer').classList.add('next');
       document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
+    } else if (currentIndex == 5 && radiobutton.id === randomBird.id.toString()) { //TODO
+        popUp.style.visibility = 'visible';
     } else {
       fillBirdCard();
       score -= 1;
@@ -275,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const radiobuttons = document.querySelectorAll('.radiobutton');
 console.log(radiobuttons);
 
-radiobuttons.forEach((radiobutton) => { 
+radiobuttons.forEach((radiobutton) => {
   radiobutton.addEventListener('click', function(e) {
     console.log(e.target);
     if (e.target.classList.contains('counter')) {
