@@ -16,6 +16,7 @@ const warmingUp = birdsData[0],
   progressContainer = document.querySelector('.progress-container'),
   answerCard = document.querySelector('.answer-card');
 
+let score = 0;
 let currentIndex = 0;
 let randomBird = birdsData[0][Math.floor(Math.random() * birdsData[0].length)];
 audio.src = randomBird.audio;
@@ -26,9 +27,6 @@ console.log(randomBird)
 //header style 
 const burgerRotate = document.querySelector('.songbird-rotate');
 const burgerMouseover = document.querySelectorAll('.songbird-mouseover');
-burgerRotate.addEventListener('click', function () {
-  alert('click');
-});
 
 burgerRotate.addEventListener('mouseover', function () {
   burgerMouseover.forEach((i) => {
@@ -45,8 +43,8 @@ burgerRotate.addEventListener('mouseout', function () {
 
 //building radiobuttons
 function createRadiobutton(bird) {
-  const radiobutton = document.createElement('div');
-  radiobutton.classList.add('radiobutton');
+  const radiobutton = document.createElement('button');
+  radiobutton.classList.add('radiobutton', 'counter');
 
   radiobutton.addEventListener('mouseover', (event) => { 
     radiobutton.classList.add('radiobtn-mouseover'); 
@@ -56,24 +54,57 @@ function createRadiobutton(bird) {
     radiobutton.classList.remove('radiobtn-mouseover'); 
   }); 
   
-  const input = document.createElement('input');
-  input.setAttribute('type', 'radio');
-  input.setAttribute('id', bird.id);
-  input.setAttribute('name', 'bird');
-  input.setAttribute('value', bird.name);
-  const label = document.createElement('label');
-  label.setAttribute('for', bird.id);
-  label.innerText = bird.name;
-  
-  radiobutton.append(input, label);
+  radiobutton.setAttribute('id', bird.id);
+  radiobutton.innerText = bird.name;
 
+  //fill bird card
+  function fillBirdCard() {
+    answerCard.innerHTML = '';
+
+    const upperBlock = document.createElement('div');
+    upperBlock.classList.add('upper-block');
+
+    const upperBlockLeft = document.createElement('div');
+    upperBlockLeft.classList.add('upper-block-left');
+
+    const upperBlockRight = document.createElement('div');
+    upperBlockRight.classList.add('upper-block-right');
+
+    const answerCardImage = document.createElement('img');
+    answerCardImage.classList.add('answer-card-image');
+    answerCardImage.setAttribute('src', `${birdsData[currentIndex][radiobutton.id - 1].image}`);
+    answerCardImage.setAttribute('alt', 'guessed bird')
+
+    const answerCardName = document.createElement('div');
+    answerCardName.classList.add('answer-card-name');
+    answerCardName.innerHTML = `${birdsData[currentIndex][radiobutton.id - 1].name}`;
+
+    const answerCardSpecies = document.createElement('div');
+    answerCardSpecies.classList.add('answer-card-species');
+    answerCardSpecies.innerHTML = `${birdsData[currentIndex][radiobutton.id - 1].species}`;
+
+    const lowerBlock = document.createElement('div');
+    lowerBlock.classList.add('lower-block');
+
+    const description = document.createElement('div');
+    description.classList.add('answer-card-description');
+    description.innerHTML = `${birdsData[currentIndex][radiobutton.id - 1].description}`;
+
+    answerCard.append(upperBlock, lowerBlock);
+    upperBlock.append(upperBlockLeft, upperBlockRight)
+    upperBlockLeft.append(answerCardImage);
+    upperBlockRight.append(answerCardName, answerCardSpecies);
+    lowerBlock.append(description);
+}
 
   //click on radiobutton
   function radioClick(e) {
-    if (input.id === randomBird.id.toString()) {
+    if (radiobutton.id === randomBird.id.toString()) {
+      document.querySelector('.score').innerHTML = `Score: ${score + 5}`;
+      radiobutton.style.backgroundColor = 'rgb(30, 211, 151)'
       answerSound.src = "./sounds/correct-answer.mp3";
+      pauseSong();
       answerSound.play();
-      input.style.checked
       fillAnswerCard();
       resetProgress();
       document.querySelector('.next-level').removeAttribute('disabled');
@@ -81,8 +112,12 @@ function createRadiobutton(bird) {
       document.querySelector('footer').classList.add('next');
       document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
     } else {
+      fillBirdCard();
+      score -= 1;
+    
       answerSound.src = './sounds/incorrect-answer.mp3';
       answerSound.play();
+      radiobutton.setAttribute('disabled', '');
     };
   };
 
@@ -102,23 +137,15 @@ function fillKeystrokeCard(birds) {
 
 function clearKeystrokeCard() {
   const fieldset = document.querySelector(".keystroke-card");
-  fieldset.innerHTML = ''
+  fieldset.innerHTML = '';
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  fillKeystrokeCard(birdsData[currentIndex]);
-  chapters[currentIndex].classList.add('current-chapter');
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  answerCard.innerHTML = 'Послушайте плеер. Выберите птицу из списка';
-});
 
 
 //next level
 const nextLevelButton = document.querySelector('.next-level');
 
 nextLevelButton.addEventListener('click', () => {
+  score = score + 5;
   document.querySelector('footer').classList.remove('next');
   document.querySelector('h2').innerHTML = '*****';
   document.querySelector('.question-image').src = './images/unknown-bird.jpg';
@@ -147,7 +174,7 @@ nextLevelButton.addEventListener('click', () => {
   pauseSong();
 });
 
-
+ 
 //audio
 function playSong() {
   audio.play();
@@ -239,3 +266,26 @@ function fillAnswerCard() {
   upperBlockRight.append(answerCardName, answerCardSpecies);
   lowerBlock.append(description);
 }
+
+
+//DOM content 
+document.addEventListener("DOMContentLoaded", () => {
+  fillKeystrokeCard(birdsData[currentIndex]);
+
+  const radiobuttons = document.querySelectorAll('.radiobutton');
+console.log(radiobuttons);
+
+radiobuttons.forEach((radiobutton) => { 
+  radiobutton.addEventListener('click', function(e) {
+    console.log(e.target);
+    if (e.target.classList.contains('counter')) {
+     
+    }
+  })
+});
+
+  chapters[currentIndex].classList.add('current-chapter');
+  answerCard.innerHTML = 'Послушайте плеер. Выберите птицу из списка';
+});
+
+
