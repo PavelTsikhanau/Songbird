@@ -20,7 +20,7 @@ const warmingUp = birdsData[0],
 
 
 let score = 0;
-let currentIndex = 0;
+let currentIndex = 5;
 let randomBird = birdsData[0][Math.floor(Math.random() * birdsData[0].length)];
 audio.src = randomBird.audio;
 
@@ -102,25 +102,26 @@ function createRadiobutton(bird) {
 
   //click on radiobutton
   function radioClick(e) {
-    console.log(currentIndex);
     if (currentIndex == 5 && radiobutton.id === randomBird.id.toString()) {
       answerSound.src = "./sounds/correct-answer.mp3";
       answerSound.play();
-      popUp.style.visibility = 'visible';
-      popUpContent.innerText = `You are a winner! Your score is ${score + 5}!`;
+      function popUpFunc() {
+        popUp.style.visibility = 'visible';
+        popUpContent.innerText = `You are a winner! Your total score is ${score + 5}!`;
+      }
+      document.querySelector('.score').innerHTML = `Score: ${score + 5}`;
+      radiobutton.style.backgroundColor = 'rgb(30, 211, 151)';
+      pauseSong();
+      fillAnswerCard();
+      resetProgress();
+      document.querySelector('.question-image').src = randomBird.image;
+      
+      document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
+      setTimeout(popUpFunc, 3000);
 
       //click on popup
       popUp.addEventListener('click', function(e) {
-        popUp.style.visibility = 'hidden';
-        radiobutton.style.backgroundColor = 'rgb(30, 211, 151)';
-        document.querySelector('.score').innerHTML = `Score: ${score + 5}`;
-        pauseSong();
-        fillAnswerCard();
-        resetProgress();
-        
-        document.querySelector('.question-image').src = randomBird.image;
-        document.querySelector('footer').classList.add('next');
-        document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
+        popUp.style.visibility = 'hidden';        
       });
 
     } else if (radiobutton.id === randomBird.id.toString()) {
@@ -189,7 +190,6 @@ nextLevelButton.addEventListener('click', () => {
   fillKeystrokeCard(birdsData[currentIndex]);
   resetProgress();
 
-  console.log(currentIndex);
   randomBird = birdsData[currentIndex][Math.floor(Math.random() * birdsData[currentIndex].length)];
   audio.src = randomBird.audio;
   console.log(randomBird.name);
@@ -294,18 +294,6 @@ function fillAnswerCard() {
 //DOM content 
 document.addEventListener("DOMContentLoaded", () => {
   fillKeystrokeCard(birdsData[currentIndex]);
-
-  const radiobuttons = document.querySelectorAll('.radiobutton');
-console.log(radiobuttons);
-
-radiobuttons.forEach((radiobutton) => {
-  radiobutton.addEventListener('click', function(e) {
-    console.log(e.target);
-    if (e.target.classList.contains('counter')) {
-     
-    }
-  })
-});
 
   chapters[currentIndex].classList.add('current-chapter');
   answerCard.innerHTML = 'Послушайте плеер. Выберите птицу из списка';
