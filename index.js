@@ -103,7 +103,7 @@ function createRadiobutton(bird) {
   //click on radiobutton
   function radioClick(e) {
     console.log(currentIndex);
-    if (currentIndex == 5 && radiobutton.id === randomBird.id.toString()) { //TODO
+    if (currentIndex == 5 && radiobutton.id === randomBird.id.toString()) {
       answerSound.src = "./sounds/correct-answer.mp3";
       answerSound.play();
       popUp.style.visibility = 'visible';
@@ -121,7 +121,7 @@ function createRadiobutton(bird) {
         document.querySelector('.question-image').src = randomBird.image;
         document.querySelector('footer').classList.add('next');
         document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
-      })
+      });
 
     } else if (radiobutton.id === randomBird.id.toString()) {
       document.querySelector('.score').innerHTML = `Score: ${score + 5}`;

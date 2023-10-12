@@ -400,7 +400,7 @@ footer button:disabled {
   overflow: hidden;
   position: fixed;
   top: 0px;
-  visibility: visible;
+  visibility: hidden;
 }
 
 .popup .popup-content {
