@@ -20,7 +20,7 @@ const warmingUp = birdsData[0],
 
 
 let score = 0;
-let currentIndex = 5;
+let currentIndex = 0;
 let randomBird = birdsData[0][Math.floor(Math.random() * birdsData[0].length)];
 audio.src = randomBird.audio;
 
