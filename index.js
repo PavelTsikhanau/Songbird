@@ -107,7 +107,7 @@ function createRadiobutton(bird) {
       answerSound.src = "./sounds/correct-answer.mp3";
       answerSound.play();
       popUp.style.visibility = 'visible';
-      popUpContent.innerText = `You are winner! Your score is ${score + 5}!`;
+      popUpContent.innerText = `You are a winner! Your score is ${score + 5}!`;
 
       //click on popup
       popUp.addEventListener('click', function(e) {
