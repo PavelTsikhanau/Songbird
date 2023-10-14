@@ -136,7 +136,11 @@ function createRadiobutton(bird) {
       document.querySelector('.question-image').src = randomBird.image;
       document.querySelector('footer').classList.add('next');
       document.querySelector('h2').innerHTML = `${randomBird.name.toUpperCase()}`;
+      document.querySelectorAll('.radiobutton').forEach((radiobutton) => {
+        radiobutton.setAttribute('disabled', '');
+      });
     } else {
+      radiobutton.classList.add('wrong');
       fillBirdCard();
       score -= 1;
       answerSound.src = './sounds/incorrect-answer.mp3';

@@ -218,7 +218,7 @@ main {
   color: rgb(0, 0, 0);
 } 
 
-.radiobutton:disabled {
+.radiobutton.wrong {
   background-color: rgb(255, 43, 1);
 }
 
@@ -618,6 +618,14 @@ footer button:disabled {
     transition: font-size 1s, color 1s;
     color: rgba(41, 34, 13, 0.63);
     cursor: pointer;
+  }
+
+  li {
+    display: none;
+  }
+
+  .current-chapter {
+    display: flex;
   }
 
   .question-block {
