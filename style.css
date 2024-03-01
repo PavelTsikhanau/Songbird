@@ -167,6 +167,7 @@ main {
   display: flex;
   border-radius: 5px;
   border: solid black 2px;
+  object-fit: cover;
 }
 
 .question-name {
@@ -585,6 +586,8 @@ footer button:disabled {
 }
 
 @media (max-width: 480px) {
+
+
   .songbird {
     display: flex;
     flex-direction: row;
@@ -626,6 +629,7 @@ footer button:disabled {
 
   .current-chapter {
     display: flex;
+    justify-content: center;
   }
 
   .question-block {
